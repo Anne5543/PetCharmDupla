@@ -1,0 +1,309 @@
+body {
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(226, 171, 240);
+}
+
+.login {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.88);
+}
+
+form {
+    background-color: #f9f9f9;
+    border-radius: 7px;
+    width: 580px;
+    height: 727px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    width: 70%;
+    padding: 10px;
+    margin: 20px auto 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 15px;
+    font-size: 18px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    padding-right: 280px;
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    white-space: nowrap;
+}
+
+#img2 {
+    width: 630px;
+    height: 730px;
+    border-radius: 7px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    width: 50%;
+    background-color: #9935ab;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.submit:hover {
+    background-color: #bb72c6;
+}
+
+.links {
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.links a {
+    color: #0a5ba2;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: #85b7e2;
+    text-decoration: underline;
+}
+
+.destaque {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+p {
+font-size: 17px;
+}
+
+
+form,
+#img2,
+.formulario,
+.submit,
+label {
+    transition: all 0.3s ease;
+}
+
+label::after {
+    content: '*';
+    color: red;
+    margin-left: 5px;
+}
+
+@media (max-width: 1274px) {
+    form {
+        height: 650px;
+        width: 90%;
+        max-width: 535px;
+    }
+
+    #img2 {
+        height: 690px;
+        width: 100%;
+        max-width: 590px;
+    }
+
+    .links {
+        margin-top: 40px;
+    }
+
+    .formulario {
+        transform: scale(0.9);
+    }
+
+    label {
+        padding-right: 30%;
+    }
+}
+
+@media (max-width: 1203px) {
+    form {
+        height: 635px;
+        width: 90%;
+        max-width: 500px;
+    }
+
+    #img2 {
+        height: 675px;
+        width: 100%;
+        max-width: 560px;
+    }
+
+    .links {
+        margin-top: 25px;
+    }
+
+    .formulario {
+        transform: scale(0.86);
+    }
+
+    label {
+        padding-right: 30%;
+    }
+}
+
+@media (max-width: 1123px) {
+    form {
+        height: 630px;
+        width: 90%;
+        max-width: 500px;
+    }
+
+    #img2 {
+        height: 670px;
+        width: 100%;
+        max-width: 550px;
+    }
+
+    label {
+        padding-right: 30%;
+    }
+
+    .links {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 1015px) {
+    form {
+        height: 645px;
+        width: 90%;
+        max-width: 780px;
+    }
+
+    #img2 {
+        display: none;
+    }
+
+    .links {
+        margin-top: 45px;
+    }
+
+    label {
+        padding-right: 40%;
+    }
+}
+
+@media (max-width: 870px) {
+    form {
+        height: 625px;
+        width: 90%;
+        max-width: 720px;
+    }
+
+    .formulario {
+        transform: scale(0.83);
+    }
+
+    label {
+        padding-right: 30%;
+    }
+}
+
+@media (max-width: 800px) {
+    form {
+        height: 600px;
+        width: 90%;
+        max-width: 700px;
+    }
+
+    .formulario {
+        transform: scale(0.8);
+    }
+
+    label {
+        padding-right: 30%;
+    }
+
+    .submit {
+        transform: scale(0.85);
+    }
+
+    .links {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 740px) {
+    form {
+        height: 610px;
+        width: 90%;
+        max-width: 420px;
+        transform: scale(0.9);
+    }
+
+    label {
+        width: 140px;
+        display: block;
+        margin-left: 50px;
+    }
+
+    .formulario {
+        transform: scale(0.85);
+    }
+
+    .links {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 507px) {
+    form {
+        height: 630px;
+        width: 90%;
+        max-width: 430px;
+        transform: scale(0.8);
+    }
+
+    label {
+        width: 130px;
+        display: block;
+        margin-left: 50px;
+    }
+
+    .formulario {
+        margin-top: -20px;
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 470px) {
+    form {
+        height: 625px;
+        width: 90%;
+        max-width: 470px;
+        transform: scale(0.7);
+    }
+
+    .formulario {
+        margin-top: -25px;
+        transform: scale(0.88);
+    }
+}
