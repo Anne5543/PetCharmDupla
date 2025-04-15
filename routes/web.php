@@ -12,8 +12,6 @@ use App\Http\Controllers\FuncionariosController;
 use App\Http\Controllers\DashboardController; 
 use App\Http\Controllers\AnimalController;
 
-
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -93,7 +91,3 @@ Route::resource('animais', AnimalController::class)->middleware('auth');
 
 
 
-
-Route::get('/dashboard', [AgendamentoController::class, 'dashboard'])->name('dashboard');
-
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');

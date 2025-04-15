@@ -62,36 +62,7 @@
 
         </div>
     </main>
-    <div class="mt-16">
-    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Resumo do Sistema</h3>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <!-- Usuários -->
-        <div class="bg-white shadow-md rounded-xl p-6">
-            <p class="text-sm text-gray-500">Total de Usuários</p>
-            <h4 class="text-3xl font-bold text-purple-600">248</h4>
-        </div>
-
-        <!-- Pets -->
-        <div class="bg-white shadow-md rounded-xl p-6">
-            <p class="text-sm text-gray-500">Pets Cadastrados</p>
-            <h4 class="text-3xl font-bold text-purple-600">134</h4>
-        </div>
-
-        <!-- Agendamentos -->
-        <div class="bg-white shadow-md rounded-xl p-6">
-            <p class="text-sm text-gray-500">Agendamentos</p>
-            <h4 class="text-3xl font-bold text-purple-600">89</h4>
-        </div>
-
-        <!-- Feedbacks -->
-        <div class="bg-white shadow-md rounded-xl p-6">
-            <p class="text-sm text-gray-500">Feedbacks</p>
-            <h4 class="text-3xl font-bold text-purple-600">42</h4>
-        </div>
-    </div>
-</div>
-
+    
 </body>
 
 </html>

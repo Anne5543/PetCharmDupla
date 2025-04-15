@@ -26,6 +26,10 @@ class Agendamento extends Model
         return $this->belongsTo(Servico::class);
     }
 
+    public function pet()
+    {
+        return $this->belongsTo(Animal::class, 'pet_id');
+    }
 
     public function service()
     {

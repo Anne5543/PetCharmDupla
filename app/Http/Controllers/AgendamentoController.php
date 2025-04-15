@@ -10,11 +10,6 @@ use App\Models\Feedback;
 
 class AgendamentoController extends Controller
 {
-    
-public function pet()
-{
-    return $this->belongsTo(Animal::class, 'pet_id'); 
-}
 
     public function dashboard()
     {
@@ -36,13 +31,14 @@ public function pet()
         $servicos = Servico::all(); 
         $agendamentos = Agendamento::with(['pet', 'service'])->get();
 
-        return view('agendamentos_admin', compact('servicos', 'agendamentos','pet'));
+        return view('agendamentos_admin', compact('servicos', 'agendamentos'));
     }
 
     public function create()
     {
         $servicos = Servico::all();
-        return view('agendamentos.create', compact('servicos'));
+        $pets = Animal::where('user_id', auth()->id())->get(); 
+        return view('agendamentos.create', compact('servicos','pets'));
     }
 
     public function store(StoreUpdateAgendamentos $request)
@@ -72,7 +68,9 @@ public function pet()
     public function edit(Agendamento $agendamento)
     {
         $servicos = Servico::all();
-        return view('agendamentos_edit', compact('agendamento', 'servicos'));
+        
+        $pets = Animal::where('user_id', auth()->id())->get(); 
+        return view('agendamentos_edit', compact('agendamento', 'servicos','pets'));
     }
 
     public function update(StoreUpdateAgendamentos $request, $id)
@@ -88,7 +86,6 @@ public function pet()
             'data'        => $validatedData['data'],
             'hora'        => $validatedData['hora'],
             'especie'     => $validatedData['especie'],
-            'meu_pet'     => $validatedData['meu_pet'],
             'id_services' => $validatedData['servico'],
             'pet_id' => $validatedData['pet_id'],
         ]);

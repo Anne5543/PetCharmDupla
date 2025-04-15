@@ -1,220 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Gerenciamento de Funcionários</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .main-content {
-            margin-top: 90px;
-            padding: 1rem;
-            flex: 1;
-        }
-
-        .action-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-      
-
         .table-container {
-            border: 1px solid #dee2e6;
-            padding: 1rem;
-            background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-        }
-
-        .table-container .btn {
-            margin: 0 0.2rem;
-        }
-
-        .table-container .btn-danger {
-            margin-left: 0;
-        }
-
-        .footer-table-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-
-        .table thead th {
-            background-color: #f8f9fa;
+            overflow-x: auto;
         }
 
         .table th,
         .table td {
-            white-space: nowrap;
             padding: 0.75rem;
-            text-align: center;
-        }
-
-        .table-container .btn {
-            margin-right: 5px;
-        }
-        table td,
-        .table th {
-            padding: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .table-responsive-sm {
-                overflow-x: auto;
-            }
-
-            .table td,
-            .table th {
-                padding: 0.3rem;
-            }
-        }
-
-        .footer-table-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-            transition: 0.3s;
-            width: 100%;
-            flex-direction: column;
-        }
-
-        @media (max-width: 768px) {
-            .footer-table-container {
-                width: 100%;
-                height: auto;
-            }
-
-            .table-container {
-                overflow-x: auto;
-            }
-        }
-
-        .table-container {
-            border: 1px solid #dee2e6;
-            padding: 1rem;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            width: 100%;
-            max-width: 900px;
-        }
-
-        .table {
-            margin-bottom: 1rem;
-            color: #212529;
-            background-color: transparent;
-        }
-
-        .table thead th {
-            vertical-align: bottom;
-            border-bottom: 2px solid #dee2e6;
-            background-color: #f8f9fa;
-        }
-
-        .table tbody+tbody {
-            border-top: 2px solid #dee2e6;
-        }
-
-        .table-sm th,
-        .table-sm td {
-            padding: 0.3rem;
         }
 
         .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: rgba(148, 163, 184, 0.1);
         }
 
         .table-hover tbody tr:hover {
-            background-color: rgba(0, 0, 0, 0.075);
-        }
-
-        .table th,
-        .table td {
-            width: 20%;
-            padding: 0.5rem;
-        }
-        *{
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: rgba(75, 85, 99, 0.2);
         }
     </style>
 </head>
 
-<body>
+<body class="bg-gray-100">
+
     @section('content')
     @include('layouts.navbar_admin')
 
- 
-        <h3 style="padding-top: 140px; margin-left:20%">Gerenciamento de Funcionários</h3>
-        <a href="{{ route('funcionarios.create') }}" class="btn btn-primary" style="margin-left:80%; margin-top:-70px">Criar funcionario</a>
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: absolute; top: 80px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000; display: block;">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-
-    
-
-    <div class="main-content" style="margin-left:200px; margin-top: 30px">
-        <div class="footer-table-container">
-            <div class="table-container table-responsive-sm">
-                <h3 class="text-center">Funcionários</h3>
-                <p class="text-center text-muted">O total de Agendamentos: <strong>XX</strong></p>
-                <table class="table table-striped table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Idade</th>
-                            <th>Nível Escolar</th>
-                            <th>Telefone</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            @foreach($funcionarios as $funcionario)
-                                <tr>
-                                    <td>{{ $funcionario->id }}</td>
-                                    <td>{{ $funcionario->nome }}</td>
-                                    <td>{{ $funcionario->email }}</td>
-                                    <td>{{ $funcionario->idade }}</td>
-                                    <td>{{ $funcionario->nivel_escolar }}</td>
-                                    <td>{{ $funcionario->telefone }}</td>
-                                    <td>
-                                        <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-warning btn-sm text-white">Editar</a>
-                                        <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            @if($funcionarios->isEmpty())
-                                <tr>
-                                    <td colspan="7" class="text-center text-muted">Nenhum funcionário encontrado.</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                </table>
-            </div>
-        </div>
+    <div class="px-4 py-6">
+        <a href="{{ route('dashboard') }}" class="text-white bg-purple-600 hover:bg-purple-700 rounded-md py-2 px-4 inline-block">
+            ← Voltar para o Painel
+        </a>
     </div>
 
-    
 
+    <div class="container mx-auto px-4 mt-16" style="margin-right:50px">
+        <h3 class="text-3xl font-semibold text-center text-purple-800 mb-6">Gerenciamento de Funcionários</h3>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <div class="flex justify-end mb-6">
+            <a href="{{ route('funcionarios.create') }}" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-md">
+                Criar Funcionário
+            </a>
+        </div>
+
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show fixed top-0 left-1/2 transform -translate-x-1/2 w-11/12 z-50 mt-16">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        <br>
+
+        <div class="table-container bg-white p-6 rounded-lg shadow-md max-w-screen-lg mx-auto">
+            <h4 class="text-center text-lg font-semibold text-purple-800 mb-4">Lista de Funcionários</h4>
+            <p class="text-center text-muted mb-6">O total de Agendamentos: <strong>XX</strong></p>
+
+            <table class="table table-striped table-hover table-sm w-full">
+                <thead>
+                    <tr>
+                        <th class="text-left text-sm text-purple-800">ID</th>
+                        <th class="text-left text-sm text-purple-800">Nome</th>
+                        <th class="text-left text-sm text-purple-800">Email</th>
+                        <th class="text-left text-sm text-purple-800">Idade</th>
+                        <th class="text-left text-sm text-purple-800">Nível Escolar</th>
+                        <th class="text-left text-sm text-purple-800">Telefone</th>
+                        <th class="text-left text-sm text-purple-800">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($funcionarios as $funcionario)
+                    <tr>
+                        <td class="text-sm text-gray-800">{{ $funcionario->id }}</td>
+                        <td class="text-sm text-gray-800">{{ $funcionario->nome }}</td>
+                        <td class="text-sm text-gray-800">{{ $funcionario->email }}</td>
+                        <td class="text-sm text-gray-800">{{ $funcionario->idade }}</td>
+                        <td class="text-sm text-gray-800">{{ $funcionario->nivel_escolar }}</td>
+                        <td class="text-sm text-gray-800">{{ $funcionario->telefone }}</td>
+                        <td class="text-sm">
+                            <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="bg-yellow-400 hover:bg-yellow-800 text-white px-3 py-1 rounded-md text-xs">Editar</a>
+                            <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-xs">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                    @if($funcionarios->isEmpty())
+                    <tr>
+                        <td colspan="7" class="text-center text-gray-500">Nenhum funcionário encontrado.</td>
+                    </tr>
+                    @endif
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
