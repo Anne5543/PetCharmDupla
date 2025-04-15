@@ -87,3 +87,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/animais', [AnimalController::class, 'index'])->name('animais.index');
 Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store');
+
+Route::resource('animais', AnimalController::class)->middleware('auth');
+

@@ -69,22 +69,52 @@ class AnimalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $animal = Animal::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
+        return view('animal_edit', compact('animal'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, $id)
+{
+    $animal = Animal::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
+
+    $validated = $request->validate([
+        'nome' => 'required|string|max:255',
+        'peso' => 'required|numeric',
+        'idade' => 'required|numeric',
+        'imagem' => 'nullable|image|max:2048',
+    ]);
+
+    if ($request->hasFile('imagem')) {
+        $imagem = $request->file('imagem');
+        $nomeImagem = md5($imagem->getClientOriginalName() . strtotime("now")) . '.' . $imagem->extension();
+        $imagem->move(public_path('images/pets'), $nomeImagem);
+        $validated['imagem'] = 'images/pets/' . $nomeImagem;
     }
+
+    $animal->update($validated);
+
+    return redirect()->route('animais.index')->with('success', 'Animal atualizado com sucesso!');
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+   
+    $animal = Animal::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
+    
+    if ($animal->imagem && file_exists(public_path($animal->imagem))) {
+        unlink(public_path($animal->imagem));
+    }
+
+    $animal->delete();
+
+    return redirect()->route('animais.index')->with('success', 'Animal excluído com sucesso!');
+
     }
 }
