@@ -104,7 +104,13 @@
                 </div>
             </form>
 
-           
+            @if ($errors->any())
+                <div class="mt-6 text-red-600 text-sm">
+                    @foreach($errors->all() as $error)
+                        <p>• {{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 

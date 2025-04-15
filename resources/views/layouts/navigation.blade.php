@@ -66,6 +66,7 @@
             <a href="#agendamentos" class="block px-4 py-2 text-white hover:bg-gray-700 no-underline">Agendamentos</a>
             <a href="#agendamentos" class="block px-4 py-2 text-white hover:bg-gray-700 no-underline">Feedback</a>
             <a href="Feedback" class="block px-4 py-2 text-white hover:bg-gray-700 no-underline">Agendamentos</a>
+            <a href="{{ route('animais.index') }}" class="text-white no-underline hover:text-gray-300">Meus Pets</a>
         </div>
 
   
