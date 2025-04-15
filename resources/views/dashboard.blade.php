@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,17 +13,15 @@
 <body class="font-sans bg-gray-100">
     @section('content')
     @include('layouts.navigation')
-
-
-
+    
     <div id="inicio" style="position: relative;">
         <img src="{{ asset('images/banner.png') }}" alt="Banner" class="banner">
-            @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000; display: block;">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000; display: block;">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
     </div>
 
     <div id="sobre" style="background-color: #f9e1fc;">
@@ -98,77 +95,79 @@
             <h2 class="text-4xl font-extrabold text-center text-purple-800 mb-4">Agendamento de Serviços</h2>
             <p class="text-center text-gray-600 mb-8">Atendimento de <span class="font-medium">segunda a sábado</span>, das <span class="font-medium">8h às 18h</span></p>
             <form action="{{ route('agendamentos.store') }}" method="post">
-            @csrf
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                
-                <div class="relative">
-            
-                    <label class="block mb-1 font-medium text-gray-700">Nome<span class="text-red-500">*</span></label>
-                    <input type="text" name="nome" placeholder="Seu nome" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-user"></i></span>
+                @csrf
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                    <div class="relative">
+
+                        <label class="block mb-1 font-medium text-gray-700">Nome<span class="text-red-500">*</span></label>
+                        <input type="text" name="nome" placeholder="Seu nome" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-user"></i></span>
+                    </div>
+
+                    <div class="relative">
+                        <label class="block mb-1 font-medium text-gray-700">Email<span class="text-red-500">*</span></label>
+                        <input type="email" name="email" placeholder="Seu email" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-envelope"></i></span>
+                    </div>
+
+                    <div class="relative">
+                        <label class="block mb-1 font-medium text-gray-700">Telefone<span class="text-red-500">*</span></label>
+                        <input type="tel" name="telefone" placeholder="(00) 0000-0000" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone"></i></span>
+                    </div>
+
+                    <div class="relative">
+                        <label class="block mb-1 font-medium text-gray-700">Data<span class="text-red-500">*</span></label>
+                        <input type="date" name="data" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-calendar-alt"></i></span>
+                    </div>
+
+                    <div class="relative">
+                        <label class="block mb-1 font-medium text-gray-700">Hora<span class="text-red-500">*</span></label>
+                        <input type="time" name="hora" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-clock"></i></span>
+                    </div>
+
+                    <div class="relative">
+                        <label class="block mb-1 font-medium text-gray-700">Espécie do Animal<span class="text-red-500">*</span></label>
+                        <input type="text" name="especie" placeholder="Ex: Cachorro, Gato..." class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-paw"></i></span>
+                    </div>
+
+
+                    <div class="relative">
+                        <label class="block mb-1 font-medium text-gray-700">Meu Pet<span class="text-red-500">*</span></label>
+                        <input type="text" name="meu_pet" placeholder="Nome do seu pet" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-dog"></i></span>
+                    </div>
+
+
+                    <div class="relative ">
+                        <label class="block mb-1 font-medium text-gray-700">Serviço<span class="text-red-500">*</span></label>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-briefcase"></i></span>
+                        <select class="form-select w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm " id="servico" name="servico" required>
+                            <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-briefcase"></i></span>
+
+                            <option value="" disabled selected>Selecione um serviço</option>
+                            @foreach ($servicos as $servico)
+                            <option value="{{ $servico->id }}">{{ $servico->nome }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
-                <div class="relative">
-                    <label class="block mb-1 font-medium text-gray-700">Email<span class="text-red-500">*</span></label>
-                    <input type="email" name="email" placeholder="Seu email" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-envelope"></i></span>
+                <div class="text-center mt-6">
+                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+                        Agendar
+                    </button>
                 </div>
 
-                <div class="relative">
-                    <label class="block mb-1 font-medium text-gray-700">Telefone<span class="text-red-500">*</span></label>
-                    <input type="tel" name="telefone" placeholder="(00) 0000-0000" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone"></i></span>
-                </div>
-
-                <div class="relative">
-                    <label class="block mb-1 font-medium text-gray-700">Data<span class="text-red-500">*</span></label>
-                    <input type="date" name="data" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-calendar-alt"></i></span>
-                </div>
-
-                <div class="relative">
-                    <label class="block mb-1 font-medium text-gray-700">Hora<span class="text-red-500">*</span></label>
-                    <input type="time" name="hora" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-clock"></i></span>
-                </div>
-
-                <div class="relative">
-                    <label class="block mb-1 font-medium text-gray-700">Espécie do Animal<span class="text-red-500">*</span></label>
-                    <input type="text" name="especie" placeholder="Ex: Cachorro, Gato..." class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-paw"></i></span>
-                </div>
+                </ul>
+        </div>
 
 
-                <div class="relative">
-                    <label class="block mb-1 font-medium text-gray-700">Meu Pet<span class="text-red-500">*</span></label>
-                    <input type="text" name="meu_pet" placeholder="Nome do seu pet" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-dog"></i></span>
-                </div>
-
-
-                <div class="relative">
-                    <label class="block mb-1 font-medium text-gray-700">Serviço<span class="text-red-500">*</span></label>
-                    <select class="form-select" id="servico" name="servico" required>
-                    <option value="" disabled selected>Selecione um serviço</option>
-                    @foreach ($servicos as $servico)
-                    <option value="{{ $servico->id }}">{{ $servico->nome }}</option>
-                    @endforeach
-                </select>
-                    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-briefcase"></i></span>
-                </div>
-            </div>
-
-            <div class="text-center mt-6">
-                <button type="submit" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
-                    Agendar
-                </button>
-            </div>
-           
-        </ul>
-    </div>
-
-
-            </form>
+        </form>
         </div>
     </section>
 
@@ -189,14 +188,14 @@
                     <input type="text" name="comentario" placeholder="Digite seu Comentário"><br>
                     <input class="btn btn-primary" type="submit" value="ENVIAR" style=" width: 120px;"></input>
                 </form>
-    <a href="" class="btn-icon" data-bs-toggle="modal" data-bs-target="#feedbackModal">
-        <img src="{{ asset('images/feedbacks.png') }}" style="height:40px; width:40px; margin-left:25%; margin-top:-50px;" alt="feedback">
-    </a>
-    @if ($errors -> any())
-            @foreach($errors->all() as $error)
+                <a href="" class="btn-icon" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                    <img src="{{ asset('images/feedbacks.png') }}" style="height:40px; width:40px; margin-left:25%; margin-top:-50px;" alt="feedback">
+                </a>
+                @if ($errors -> any())
+                @foreach($errors->all() as $error)
                 {{$error}}
-            @endforeach
-    @endif
+                @endforeach
+                @endif
 
 
             </div>
@@ -256,7 +255,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $feedback->comentario }}</td>
                                     <td>
-                                    <a href="#" class="btn btn-warning text text-white" data-bs-toggle="modal" data-bs-target="#editFeedbackModal{{ $feedback->id }}" style="height:38px">Editar</a>
+                                        <a href="#" class="btn btn-warning text text-white" data-bs-toggle="modal" data-bs-target="#editFeedbackModal{{ $feedback->id }}" style="height:38px">Editar</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -267,55 +266,55 @@
                         @endif
 
                     </div>
-                    
+
                 </div>
             </div>
         </div>
         @foreach ($feedbacks as $feedback)
-    <div class="modal fade" id="editFeedbackModal{{ $feedback->id }}" tabindex="-1" aria-labelledby="editFeedbackModalLabel{{ $feedback->id }}" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editFeedbackModalLabel{{ $feedback->id }}">Editar Feedback</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('feedbacks.update', $feedback->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+        <div class="modal fade" id="editFeedbackModal{{ $feedback->id }}" tabindex="-1" aria-labelledby="editFeedbackModalLabel{{ $feedback->id }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editFeedbackModalLabel{{ $feedback->id }}">Editar Feedback</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('feedbacks.update', $feedback->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
 
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" name="nome" id="nome" value="{{ $feedback->nome }}" required>
-                        </div>
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" name="nome" id="nome" value="{{ $feedback->nome }}" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="telefone" class="form-label">Telefone</label>
-                            <input type="tel" class="form-control" name="telefone" id="telefone" value="{{ $feedback->telefone }}" required>
-                        </div>
+                            <div class="mb-3">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="tel" class="form-control" name="telefone" id="telefone" value="{{ $feedback->telefone }}" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" value="{{ $feedback->email }}" required>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="comentario" class="form-label">Comentário</label>
-                            <textarea class="form-control" name="comentario" id="comentario" rows="4" required>{{ $feedback->comentario }}</textarea>
-                        </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" value="{{ $feedback->email }}" required>
+                            </div>
 
 
-                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    </form>
+                            <div class="mb-3">
+                                <label for="comentario" class="form-label">Comentário</label>
+                                <textarea class="form-control" name="comentario" id="comentario" rows="4" required>{{ $feedback->comentario }}</textarea>
+                            </div>
 
-                   
+
+                            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
+
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-@endforeach
+        @endforeach
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
