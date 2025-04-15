@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+
+
 </head>
 
 <body class="font-sans bg-gray-100">
@@ -112,7 +114,7 @@
 
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Telefone<span class="text-red-500">*</span></label>
-                        <input type="tel" name="telefone" placeholder="(00) 0000-0000" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <input type="text" name="telefone" id="telefone-agendamento" placeholder="(00) 0000-0000" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
                         <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone" style="margin-top: 22px;"></i></span>
                     </div>
 
@@ -186,7 +188,7 @@
                     <label style="font-size: 18px;"><strong>Nome: <span style="color: red;">*</span></strong></label><br>
                     <input type="text" name="nome" placeholder="Digite seu nome"><br>
                     <label style="font-size: 18px;"><strong>Telefone: <span style="color: red;">*</span></strong></label><br>
-                    <input type="tel" name="telefone" class="form-control" id="telefone" onkeypress="$(this).mask('(00) 0000-0000')" placeholder="(00) 0000-0000" required>
+                    <input type="tel" name="telefone" class="form-control" id="telefone-contato" placeholder="(00) 0000-0000" required>
                     <label style="font-size: 18px;"><strong>Email: <span style="color: red;">*</span></strong></label><br>
                     <input type="email" name="email" class="form-control" id="email" placeholder="Digite seu email" required>
                     <label style="font-size: 18px;"><strong>Seu Comentário: <span style="color: red;">*</span></strong></label><br>
@@ -295,7 +297,7 @@
 
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">Telefone</label>
-                                <input type="tel" class="form-control" name="telefone" id="telefone" value="{{ $feedback->telefone }}" required>
+                                <input type="text" class="form-control" name="telefone" id="telefone" value="{{ $feedback->telefone }}" required oninput="mascaraTelefone(this)">
                             </div>
 
                             <div class="mb-3">
@@ -320,6 +322,9 @@
             </div>
         </div>
         @endforeach
+
+
+      
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
