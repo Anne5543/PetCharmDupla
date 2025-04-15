@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateAgendamentos;
 use App\Models\Agendamento;
 use App\Models\Servico;
+use App\Models\Animal;
+use App\Models\Feedback;
 
 class AgendamentoController extends Controller
 {
     public function dashboard()
     {
         $servicos = Servico::all();
-        return view('dashboard', compact('servicos'));
+        $feedbacks = Feedback::all();
+        $pets = Animal::where('user_id', auth()->id())->get();
+        return view('dashboard', compact('servicos', 'feedbacks','pets'));
     }
     public Agendamento $agendamento;
 
@@ -46,8 +50,8 @@ class AgendamentoController extends Controller
             'data'        => $validatedData['data'],
             'hora'        => $validatedData['hora'],
             'especie'     => $validatedData['especie'],
-            'meu_pet'     => $validatedData['meu_pet'],
             'id_services' => $validatedData['servico'],
+            'pet_id'      => $validatedData['pet_id'],
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Agendamento enviado com sucesso!');
@@ -80,12 +84,11 @@ class AgendamentoController extends Controller
             'especie'     => $validatedData['especie'],
             'meu_pet'     => $validatedData['meu_pet'],
             'id_services' => $validatedData['servico'],
+            'pet_id' => $validatedData['pet_id'],
         ]);
 
         return redirect()->route('agendamentos.admin')->with('success', 'Agendamento atualizado com sucesso!');
     }
-
-   
     public function destroy($id)
     {
         $agendamento = Agendamento::findOrFail($id);
@@ -93,4 +96,6 @@ class AgendamentoController extends Controller
 
         return redirect()->route('agendamentos.index')->with('success', 'Agendamento excluído com sucesso!');
     }
+
+
 }

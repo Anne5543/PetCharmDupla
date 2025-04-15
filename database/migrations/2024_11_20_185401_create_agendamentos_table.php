@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->time('hora');
                 $table->string('especie');
                 $table->foreignId('id_services')->constrained('servicos');
+                $table->foreign('pet_id')->references('id')->on('animals')->onDelete('cascade');
                 $table->timestamps();
             });
         

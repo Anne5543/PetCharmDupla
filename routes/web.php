@@ -90,3 +90,7 @@ Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store
 
 Route::resource('animais', AnimalController::class)->middleware('auth');
 
+
+
+
+Route::get('/dashboard', [AgendamentoController::class, 'dashboard'])->name('dashboard');

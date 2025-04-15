@@ -16,8 +16,8 @@ class Agendamento extends Model
         'data',
         'hora',
         'especie',
-        'meu_pet',
         'id_services',
+        'pet_id',
     ];
 
 

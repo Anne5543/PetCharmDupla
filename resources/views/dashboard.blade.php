@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
 <body class="font-sans bg-gray-100">
     @section('content')
     @include('layouts.navigation')
-    
+
     <div id="inicio" style="position: relative;">
         <img src="{{ asset('images/banner.png') }}" alt="Banner" class="banner">
         @if (session('success'))
@@ -135,10 +136,18 @@
 
 
                     <div class="relative">
-                        <label class="block mb-1 font-medium text-gray-700">Meu Pet<span class="text-red-500">*</span></label>
-                        <input type="text" name="meu_pet" placeholder="Nome do seu pet" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <label class="block mb-1 font-medium text-gray-700">Selecione o seu Pet<span class="text-red-500">*</span></label>
+                        <select class="form-select w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm" id="pet" name="pet_id" required>
+                            <option value="" disabled selected>Selecione um pet</option>
+
+
+                            @foreach ($pets as $pet)
+                            <option value="{{ $pet->id }}">{{ $pet->nome }}</option>
+                            @endforeach
+                        </select>
                         <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-dog"></i></span>
                     </div>
+
 
 
                     <div class="relative ">

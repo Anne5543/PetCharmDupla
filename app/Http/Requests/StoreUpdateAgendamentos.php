@@ -28,8 +28,9 @@ class StoreUpdateAgendamentos extends FormRequest
             'data' => 'required|date',
             'hora' => 'required',
             'especie' => 'required|string|max:20',
-             'meu_pet' =>'required|string|max:50',
             'servico' => 'required|exists:servicos,id',
+            'pet_id' => 'required|exists:animals,id',
+
         
         ];
     }

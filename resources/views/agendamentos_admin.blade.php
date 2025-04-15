@@ -193,7 +193,8 @@
                                     <td>{{ $agendamento->data }}</td>
                                     <td>{{ $agendamento->hora }}</td>
                                     <td>{{ $agendamento->especie }}</td>
-                                    <td>{{ $agendamento->meu_pet }}</td>
+                                    <td>{{ $agendamento->animals->nome }}</td>
+
                                     <td>{{ $agendamento->service->nome }}</td>
                                     <td>
                                         <a href="{{ route('agendamentos.edit', $agendamento->id) }}" class="btn btn-warning text text-white btn-sm">Editar</a>
