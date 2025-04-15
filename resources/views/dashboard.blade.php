@@ -97,9 +97,7 @@
             <form action="{{ route('agendamentos.store') }}" method="post">
                 @csrf
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
                     <div class="relative">
-
                         <label class="block mb-1 font-medium text-gray-700">Nome<span class="text-red-500">*</span></label>
                         <input type="text" name="nome" placeholder="Seu nome" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
                         <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-user"></i></span>

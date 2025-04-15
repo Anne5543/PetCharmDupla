@@ -10,6 +10,8 @@ use App\Http\Controllers\AdminController;
 use App\Models\Agendamento;
 use App\Http\Controllers\FuncionariosController;
 use App\Http\Controllers\DashboardController; 
+use App\Http\Controllers\AnimalController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -66,15 +68,15 @@ Route::middleware(['auth'])->group(function () {
         return view('agendamentos_admin', compact('agendamentos'));
     })->name('agendamentos.admin');
 
-    Route::get('agendamentos/{id}/edit', [AgendamentosController::class, 'edit'])->name('agendamentos.edit');
-    Route::get('agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
-    Route::put('/agendamentos/{id}', [AgendamentosController::class, 'update'])->name('agendamentos.update');
+    Route::get('agendamentos/{id}/edit', [AgendamentoController::class, 'edit'])->name('agendamentos.edit');
+    Route::get('agendamentos', [AgendamentoController::class, 'index'])->name('agendamentos.index');
+    Route::put('/agendamentos/{id}', [AgendamentoController::class, 'update'])->name('agendamentos.update');
 
 });
 
 Route::get('/redirect', [UserRedirectController::class, 'redirectUser'])->middleware('auth')->name('redirect');
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth')->name('tela_admin');
-Route::get('/dashboard', [AgendamentosController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [AgendamentoController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/funcionarios', [FuncionariosController::class, 'funcionarios'])->middleware(['auth', 'verified'])->name('funcionarios_admin');
 Route::get('/redirect', [UserRedirectController::class, 'redirectUser'])->middleware('auth')->name('redirect');
 Route::get('/dashboard', [FeedbackController::class, 'dashboard'])->name('dashboard');
@@ -82,3 +84,6 @@ Route::get('/feedbacks-admin', [FeedbackController::class, 'feedbacksAdmin'])->m
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/animais', [AnimalController::class, 'index']);
+Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store');
