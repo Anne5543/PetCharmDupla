@@ -111,18 +111,20 @@
                         <input type="email" name="email" placeholder="Seu email" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
                         <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-envelope" style="margin-top: 20px;"></i></span>
                     </div>
-
                     <div class="relative">
-                        <label class="block mb-1 font-medium text-gray-700">Telefone<span class="text-red-500">*</span></label>
-                        <input type="text" name="telefone" id="telefone-agendamento" placeholder="(00) 0000-0000" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone" style="margin-top: 22px;"></i></span>
-                    </div>
+    <label class="block mb-1 font-medium text-gray-700">Telefone<span class="text-red-500">*</span></label>
+    <input type="text" name="telefone" id="telefone-agendamento" max="11"placeholder="(00) 00000-0000" 
+        class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone" style="margin-top: 22px;"></i></span>
+</div>
 
-                    <div class="relative">
-                        <label class="block mb-1 font-medium text-gray-700">Data<span class="text-red-500">*</span></label>
-                        <input type="date" name="data" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-calendar-alt" style="margin-top: 20px;"></i></span>
-                    </div>
+
+<div class="relative">
+    <label class="block mb-1 font-medium text-gray-700">Data<span class="text-red-500">*</span></label>
+    <input type="date" name="data" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm" value="{{ old('data', $agendamento->data ?? '') }}">
+    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-calendar-alt" style="margin-top: 20px;"></i></span>
+</div>
+
 
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Hora<span class="text-red-500">*</span></label>
@@ -190,7 +192,7 @@
                     <label style="font-size: 18px;"><strong>Nome: <span style="color: red;">*</span></strong></label><br>
                     <input type="text" name="nome" placeholder="Digite seu nome"><br>
                     <label style="font-size: 18px;"><strong>Telefone: <span style="color: red;">*</span></strong></label><br>
-                    <input type="tel" name="telefone" class="form-control" id="telefone-contato" placeholder="(00) 0000-0000" required>
+                    <input type="text" name="telefone" class="form-control" id="telefone-contato" placeholder="(00) 0000-0000" required>
                     <label style="font-size: 18px;"><strong>Email: <span style="color: red;">*</span></strong></label><br>
                     <input type="email" name="email" class="form-control" id="email" placeholder="Digite seu email" required>
                     <label style="font-size: 18px;"><strong>Seu Comentário: <span style="color: red;">*</span></strong></label><br>
@@ -298,7 +300,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="telefone" class="form-label">Telefone</label>
+                                <label for="telefone" class="form-label" id="telefone-modal">Telefone</label>
                                 <input type="text" class="form-control" name="telefone" id="telefone" value="{{ $feedback->telefone }}" required oninput="mascaraTelefone(this)">
                             </div>
 
@@ -326,7 +328,46 @@
         @endforeach
 
 
-      
+        <script>
+    document.getElementById('telefone-agendamento').addEventListener('input', function(event) {
+        let input = event.target.value;
+        
+        input = input.replace(/\D/g, '');
+
+        if (input.length > 11) {
+            input = input.substring(0, 11);
+        }
+
+        if (input.length <= 2) {
+            input = input.replace(/^(\d{0,2})/, '($1');
+        } else if (input.length <= 7) {
+            input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+        } else {
+            input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+        }
+        event.target.value = input;
+    });
+</script>
+<script>
+    document.getElementById('telefone-contato').addEventListener('input', function(event) {
+        let input = event.target.value;
+
+        input = input.replace(/\D/g, '');
+
+        if (input.length > 11) {
+            input = input.substring(0, 11); 
+        }
+        if (input.length <= 2) {
+            input = input.replace(/^(\d{0,2})/, '($1');
+        } else if (input.length <= 7) {
+            input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+        } else {
+            input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+        }
+
+        event.target.value = input;
+    });
+</script>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

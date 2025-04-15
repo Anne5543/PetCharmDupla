@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserRedirectController;
 use App\Http\Controllers\AdminController;
 use App\Models\Agendamento;
+use App\Models\Animal;
 use App\Http\Controllers\FuncionariosController;
 use App\Http\Controllers\DashboardController; 
 use App\Http\Controllers\AnimalController;
@@ -89,10 +90,11 @@ Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store
 
 Route::resource('animais', AnimalController::class)->middleware('auth');
 
-Route::get('/animais', [AnimalController::class, 'index'])->name('animais.index');
-Route::get('/animais/{id}/edit', [AnimalController::class, 'edit'])->name('animais.edit');
-Route::delete('/animais/{id}', [AnimalController::class, 'destroy'])->name('animais.destroy');
-Route::get('/pets', [AnimalController::class, 'index'])->name('pets_admin');
 
-
-
+Route::get('/pets-admin', function () {
+    // Buscar os animais (pets) do usuário autenticado
+    $animais = \App\Models\Animal::where('user_id', auth()->user()->id)->get();
+    
+    // Retornar a view 'pets_admin' com a variável 'animais'
+    return view('pets_admin', compact('animais'));
+})->name('pets_admin');

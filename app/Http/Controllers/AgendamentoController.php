@@ -51,11 +51,13 @@ public function pet()
     {
         $validatedData = $request->validated();
 
+        $dataFormatada = \Carbon\Carbon::createFromFormat('Y-m-d', $validatedData['data'])->format('Y-m-d');
+
         Agendamento::create([
             'nome'        => $validatedData['nome'],
             'email'       => $validatedData['email'],
             'telefone'    => $validatedData['telefone'],
-            'data'        => $validatedData['data'],
+            'data'        => $dataFormatada, 
             'hora'        => $validatedData['hora'],
             'especie'     => $validatedData['especie'],
             'id_services' => $validatedData['servico'],
@@ -74,7 +76,7 @@ public function pet()
     public function edit(Agendamento $agendamento)
     {
         $servicos = Servico::all();
-        return view('agendamentos_edit', compact('agendamento', 'servicos','pets'));
+        return view('agendamentos_edit', compact('agendamento', 'servicos'));
     }
 
     public function update(StoreUpdateAgendamentos $request, $id)

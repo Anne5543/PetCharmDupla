@@ -11,8 +11,7 @@ class AnimalController extends Controller
     public function index()
     {
         $animais = Animal::where('user_id', auth()->user()->id)->get();
-        $animais = Animal::all();
-        return view('pets_admin', compact('animais'));
+        return view('animal', compact('animais'));
     }
 
     public function create()

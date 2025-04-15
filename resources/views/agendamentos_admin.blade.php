@@ -52,7 +52,10 @@
                         <td class="px-2 py-2">{{ $agendamento->id }}</td>
                         <td class="px-2 py-2">{{ $agendamento->nome }}</td>
                         <td class="px-2 py-2">{{ $agendamento->telefone }}</td>
-                        <td class="px-2 py-2">{{ $agendamento->data }}</td>
+                        <td class="px-2 py-2">{{ \Carbon\Carbon::parse($agendamento->data)->format('d/m/Y') }}</td> 
+
+
+
                         <td class="px-2 py-2">{{ $agendamento->hora }}</td>
                         <td class="px-2 py-2">{{ $agendamento->especie }}</td>
                         <td class="px-2 py-2">{{ $agendamento->pet->nome }}</td>

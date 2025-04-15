@@ -235,9 +235,6 @@
                     <a href="{{route('feedbacks_admin')}}" class="nav_link">
                         <span class="nav_name">Feedback</span>
                     </a>
-                    <a href="{{route('pets_admin')}}" class="nav_link">
-                        <span class="nav_name">Pets</span>
-                    </a>
                 </div>
             </div>
         </nav>
