@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
- 
+
 
 </head>
 
@@ -21,7 +21,7 @@
         <strong>Erro(s):</strong>
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -164,10 +164,10 @@
                             @endforeach
                         </select>
                         @if ($errors -> any())
-                @foreach($errors->all() as $error)
-                {{$error}}
-                @endforeach
-                @endif
+                        @foreach($errors->all() as $error)
+                        {{$error}}
+                        @endforeach
+                        @endif
                     </div>
 
 
@@ -203,7 +203,7 @@
                 <h1>FALE CONOSCO</h1>
                 <p>Para entrar em contato com a nossa equipe, por favor, preencha o formulário abaixo.</p>
 
-         
+
                 <form action="{{ route('feedback.store') }}" method="post">
                     @csrf
                     <label style="font-size: 18px;"><strong>Nome: <span style="color: red;">*</span></strong></label><br>

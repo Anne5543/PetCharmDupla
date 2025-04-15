@@ -26,6 +26,7 @@
             background-color: rgba(75, 85, 99, 0.2);
         }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body class="bg-gray-100">
@@ -39,6 +40,13 @@
         </a>
     </div>
 
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000; display: block;">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
 
     <div class="container mx-auto px-4 mt-16" style="margin-right:50px">
         <h3 class="text-3xl font-semibold text-center text-purple-800 mb-6">Gerenciamento de Funcionários</h3>
@@ -49,13 +57,7 @@
             </a>
         </div>
 
-        @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show fixed top-0 left-1/2 transform -translate-x-1/2 w-11/12 z-50 mt-16">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        <br>
+
 
         <div class="table-container bg-white p-6 rounded-lg shadow-md max-w-screen-lg mx-auto">
             <h4 class="text-center text-lg font-semibold text-purple-800 mb-4">Lista de Funcionários</h4>
@@ -84,7 +86,7 @@
                         <td class="text-sm text-gray-800">{{ $funcionario->telefone }}</td>
                         <td class="text-sm">
                             <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="bg-yellow-400 hover:bg-yellow-800 text-white px-3 py-1 rounded-md text-xs">Editar</a>
-                            <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este funcionario?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-xs">Excluir</button>
