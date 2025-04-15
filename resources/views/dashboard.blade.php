@@ -17,6 +17,8 @@
     @section('content')
     @include('layouts.navigation')
 
+
+
     <div id="inicio" style="position: relative;">
         <img src="{{ asset('images/banner.png') }}" alt="Banner" class="banner">
         @if (session('success'))
@@ -112,18 +114,18 @@
                         <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-envelope" style="margin-top: 20px;"></i></span>
                     </div>
                     <div class="relative">
-    <label class="block mb-1 font-medium text-gray-700">Telefone<span class="text-red-500">*</span></label>
-    <input type="text" name="telefone" id="telefone-agendamento" max="11"placeholder="(00) 00000-0000" 
-        class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone" style="margin-top: 22px;"></i></span>
-</div>
+                        <label class="block mb-1 font-medium text-gray-700">Telefone<span class="text-red-500">*</span></label>
+                        <input type="text" name="telefone" id="telefone-agendamento" max="11" placeholder="(00) 00000-0000"
+                            class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone" style="margin-top: 22px;"></i></span>
+                    </div>
 
 
-<div class="relative">
-    <label class="block mb-1 font-medium text-gray-700">Data<span class="text-red-500">*</span></label>
-    <input type="date" name="data" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm" value="{{ old('data', $agendamento->data ?? '') }}">
-    <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-calendar-alt" style="margin-top: 20px;"></i></span>
-</div>
+                    <div class="relative">
+                        <label class="block mb-1 font-medium text-gray-700">Data<span class="text-red-500">*</span></label>
+                        <input type="date" name="data" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm" value="{{ old('data', $agendamento->data ?? '') }}">
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-calendar-alt" style="margin-top: 20px;"></i></span>
+                    </div>
 
 
                     <div class="relative">
@@ -142,24 +144,28 @@
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Selecione o seu Pet<span class="text-red-500">*</span></label>
                         <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-dog" style="margin-top: 20px;"></i></span>
-                        
-                        
+
+
                         <select class="form-select w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm" id="pet" name="pet_id" required>
-        <option value="" disabled selected>Selecione um pet</option>
-        @foreach ($pets as $pet)
-            <option value="{{ $pet->id }}">{{ $pet->nome }}</option>
-        @endforeach
-    </select>
+                            <option value="" disabled selected>Selecione um pet</option>
+                            @foreach ($pets as $pet)
+                            <option value="{{ $pet->id }}">{{ $pet->nome }}</option>
+                            @endforeach
                         </select>
+                        @if ($errors -> any())
+                @foreach($errors->all() as $error)
+                {{$error}}
+                @endforeach
+                @endif
                     </div>
 
 
 
                     <div class="relative ">
                         <label class="block mb-1 font-medium text-gray-700">Serviço<span class="text-red-500">*</span></label>
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-briefcase"  style="margin-top: 20px;"></i></span>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-briefcase" style="margin-top: 20px;"></i></span>
                         <select class="form-select w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm " id="servico" name="servico" required>
-                            
+
                             <option value="" disabled selected>Selecione um serviço</option>
                             @foreach ($servicos as $servico)
                             <option value="{{ $servico->id }}">{{ $servico->nome }}</option>
@@ -176,10 +182,8 @@
 
                 </ul>
         </div>
-
-
         </form>
-        </div>
+
     </section>
 
     <div id="contatos" style="margin-top: 50px;">
@@ -329,45 +333,45 @@
 
 
         <script>
-    document.getElementById('telefone-agendamento').addEventListener('input', function(event) {
-        let input = event.target.value;
-        
-        input = input.replace(/\D/g, '');
+            document.getElementById('telefone-agendamento').addEventListener('input', function(event) {
+                let input = event.target.value;
 
-        if (input.length > 11) {
-            input = input.substring(0, 11);
-        }
+                input = input.replace(/\D/g, '');
 
-        if (input.length <= 2) {
-            input = input.replace(/^(\d{0,2})/, '($1');
-        } else if (input.length <= 7) {
-            input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-        } else {
-            input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-        }
-        event.target.value = input;
-    });
-</script>
-<script>
-    document.getElementById('telefone-contato').addEventListener('input', function(event) {
-        let input = event.target.value;
+                if (input.length > 11) {
+                    input = input.substring(0, 11);
+                }
 
-        input = input.replace(/\D/g, '');
+                if (input.length <= 2) {
+                    input = input.replace(/^(\d{0,2})/, '($1');
+                } else if (input.length <= 7) {
+                    input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+                } else {
+                    input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+                }
+                event.target.value = input;
+            });
+        </script>
+        <script>
+            document.getElementById('telefone-contato').addEventListener('input', function(event) {
+                let input = event.target.value;
 
-        if (input.length > 11) {
-            input = input.substring(0, 11); 
-        }
-        if (input.length <= 2) {
-            input = input.replace(/^(\d{0,2})/, '($1');
-        } else if (input.length <= 7) {
-            input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-        } else {
-            input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-        }
+                input = input.replace(/\D/g, '');
 
-        event.target.value = input;
-    });
-</script>
+                if (input.length > 11) {
+                    input = input.substring(0, 11);
+                }
+                if (input.length <= 2) {
+                    input = input.replace(/^(\d{0,2})/, '($1');
+                } else if (input.length <= 7) {
+                    input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+                } else {
+                    input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+                }
+
+                event.target.value = input;
+            });
+        </script>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

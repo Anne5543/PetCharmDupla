@@ -12,6 +12,15 @@
     @section('content')
     @include('layouts.navigation')<br><br><br>
 
+    <div style="position: relative;">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000; display: block;">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+    </div>
+
     <div class="container mx-auto py-10 px-4">
 
         <div class="flex justify-between items-center mb-6">
@@ -25,7 +34,7 @@
             <button onclick="mostrarFormulario()" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg shadow-lg transition">
                 + Criar
             </button>
-        </div>
+        </div><br><br><br>
 
         <div class="bg-white rounded-lg shadow-xl p-8 mb-8 hidden mx-auto max-w-lg" id="formulario">
             <h2 class="text-2xl font-semibold mb-6 text-gray-800 text-center">Cadastrar Novo Animal</h2>
@@ -58,6 +67,7 @@
                         Salvar Animal
                     </button>
                 </div>
+                
             </form>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -82,6 +92,11 @@
                             Excluir
                         </button>
                     </form>
+                    @if ($errors -> any())
+                @foreach($errors->all() as $error)
+                {{$error}}
+                @endforeach
+                @endif
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateAnimais;
 use Illuminate\Http\Request;
 use App\Models\Animal;
 
@@ -19,7 +20,7 @@ class AnimalController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateAnimais $request)
 {
     $validated = $request->validate([
         'nome' => 'required|string|max:255',
@@ -58,7 +59,7 @@ class AnimalController extends Controller
         return view('animal_edit', compact('animal'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreUpdateAnimais $request, $id)
     {
         $animal = Animal::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
     
