@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Editar Animal</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body class="bg-purple-50 font-sans">
@@ -23,6 +24,18 @@
             </div>
 
             <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Editar Informações do Pet</h1>
+            @if ($errors->any())
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000;">
+        <strong>Erro(s):</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
 
             <form action="{{ route('animais.update', $animal->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -60,15 +73,12 @@
                         Atualizar Pet
                     </button>
                 </div>
-                @if ($errors -> any())
-                @foreach($errors->all() as $error)
-                {{$error}}
-                @endforeach
-                @endif
+                
             </form>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

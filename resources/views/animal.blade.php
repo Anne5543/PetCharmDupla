@@ -5,21 +5,33 @@
     <meta charset="UTF-8">
     <title>Animais</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body class="bg-purple-50 font-sans">
 
     @section('content')
     @include('layouts.navigation')<br><br><br>
-
-    <div style="position: relative;">
-        @if (session('success'))
+    @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000; display: block;">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        @endif
+     @endif
+
+     @if ($errors->any())
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000;">
+        <strong>Erro(s):</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    @endif
+
+
 
     <div class="container mx-auto py-10 px-4">
 
@@ -34,7 +46,7 @@
             <button onclick="mostrarFormulario()" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg shadow-lg transition">
                 + Criar
             </button>
-        </div><br><br><br>
+        </div>
 
         <div class="bg-white rounded-lg shadow-xl p-8 mb-8 hidden mx-auto max-w-lg" id="formulario">
             <h2 class="text-2xl font-semibold mb-6 text-gray-800 text-center">Cadastrar Novo Animal</h2>
@@ -92,11 +104,7 @@
                             Excluir
                         </button>
                     </form>
-                    @if ($errors -> any())
-                @foreach($errors->all() as $error)
-                {{$error}}
-                @endforeach
-                @endif
+                   
                 </div>
             </div>
         </div>
@@ -110,6 +118,8 @@
             form.classList.toggle('hidden');
         }
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
 
