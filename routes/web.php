@@ -72,6 +72,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agendamentos', [AgendamentoController::class, 'index'])->name('agendamentos.index');
     Route::put('/agendamentos/{id}', [AgendamentoController::class, 'update'])->name('agendamentos.update');
 
+
+    Route::get('/animais', [AnimalController::class, 'index'])->name('animais.index');
+    Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store');
+
+    Route::resource('animais', AnimalController::class)->middleware('auth');
+
 });
 
 Route::get('/redirect', [UserRedirectController::class, 'redirectUser'])->middleware('auth')->name('redirect');
@@ -85,7 +91,4 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/animais', [AnimalController::class, 'index'])->name('animais.index');
-Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store');
 
-Route::resource('animais', AnimalController::class)->middleware('auth');
