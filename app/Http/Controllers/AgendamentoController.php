@@ -10,6 +10,11 @@ use App\Models\Feedback;
 
 class AgendamentoController extends Controller
 {
+    
+public function pet()
+{
+    return $this->belongsTo(Animal::class, 'pet_id'); 
+}
 
     public function dashboard()
     {
@@ -30,15 +35,16 @@ class AgendamentoController extends Controller
     {
         $servicos = Servico::all(); 
         $agendamentos = Agendamento::with(['pet', 'service'])->get();
-
-        return view('agendamentos_admin', compact('servicos', 'agendamentos'));
+        $pets = Animal::where('user_id', auth()->id())->get();  
+        
+        return view('agendamentos_admin', compact('servicos', 'agendamentos', 'pets'));
     }
 
     public function create()
     {
         $servicos = Servico::all();
         $pets = Animal::where('user_id', auth()->id())->get(); 
-        return view('agendamentos.create', compact('servicos','pets'));
+        return view('agendamentos.create', compact('servicos', 'pets'));
     }
 
     public function store(StoreUpdateAgendamentos $request)
@@ -68,8 +74,6 @@ class AgendamentoController extends Controller
     public function edit(Agendamento $agendamento)
     {
         $servicos = Servico::all();
-        
-        $pets = Animal::where('user_id', auth()->id())->get(); 
         return view('agendamentos_edit', compact('agendamento', 'servicos','pets'));
     }
 

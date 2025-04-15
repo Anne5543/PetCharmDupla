@@ -29,7 +29,6 @@
                 @csrf
                 @method('PUT')
 
-                <!-- Imagem -->
                 <div class="mb-6 text-center">
                     <label class="block text-sm font-medium text-purple-700 mb-2">Imagem Atual:</label>
                     <div class="flex items-center justify-center mb-4">
@@ -42,25 +41,21 @@
                     <input type="file" name="imagem" accept="image/*" class="w-full border-2 border-purple-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 transition duration-300 ease-in-out">
                 </div>
 
-                <!-- Nome -->
                 <div class="mb-6">
                     <label class="block text-sm font-medium text-purple-700 mb-2">Nome:</label>
                     <input type="text" name="nome" value="{{ $animal->nome }}" required class="w-full border-2 border-purple-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 transition duration-300 ease-in-out">
                 </div>
 
-                <!-- Peso -->
                 <div class="mb-6">
                     <label class="block text-sm font-medium text-purple-700 mb-2">Peso (kg):</label>
                     <input type="number" step="0.01" name="peso" value="{{ $animal->peso }}" required class="w-full border-2 border-purple-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 transition duration-300 ease-in-out">
                 </div>
 
-                <!-- Idade -->
                 <div class="mb-6">
                     <label class="block text-sm font-medium text-purple-700 mb-2">Idade (anos):</label>
                     <input type="number" name="idade" value="{{ $animal->idade }}" required class="w-full border-2 border-purple-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 transition duration-300 ease-in-out">
                 </div>
 
-                <!-- Botão -->
                 <div class="text-center">
                     <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500">
                         Atualizar Pet

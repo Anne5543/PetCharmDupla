@@ -54,14 +54,18 @@
             <div class="bg-white rounded-xl shadow-md hover:shadow-xl p-6 text-center transition transform hover:-translate-y-1">
                 <h2 class="text-xl font-semibold text-gray-800 mb-2">Meus Pets</h2>
                 <p class="text-gray-600 mb-4">Visualize todos os pets cadastrados.</p>
-                <a href=""
+                <a href="{{ route('pets_admin') }}"
                     class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition">
                     Ver
                 </a>
             </div>
 
         </div>
+
+        
     </main>
+
+
     
 </body>
 

@@ -30,7 +30,7 @@
 
         <div class="bg-white p-6 rounded-lg shadow-md mx-auto max-w-4xl overflow-x-auto">
             <h4 class="text-center text-lg font-semibold text-purple-800 mb-4">Lista de Agendamentos</h4>
-            <p class="text-center text-gray-600 mb-6">Total de Agendamentos: <strong>XX</strong></p>
+            <p class="text-center text-gray-600 mb-6">Total de Agendamentos: <strong>{{ count($agendamentos) }}</strong></p>
 
             <table class="table-auto w-full text-sm text-gray-700 text-left">
                 <thead>
@@ -40,6 +40,7 @@
                         <th class="px-2 py-2">Telefone</th>
                         <th class="px-2 py-2">Data</th>
                         <th class="px-2 py-2">Hora</th>
+                        <th class="px-2 py-2">Espécie</th>
                         <th class="px-2 py-2">Pet</th>
                         <th class="px-2 py-2">Serviço</th>
                         <th class="px-2 py-2">Ações</th>
@@ -53,6 +54,7 @@
                         <td class="px-2 py-2">{{ $agendamento->telefone }}</td>
                         <td class="px-2 py-2">{{ $agendamento->data }}</td>
                         <td class="px-2 py-2">{{ $agendamento->hora }}</td>
+                        <td class="px-2 py-2">{{ $agendamento->especie }}</td>
                         <td class="px-2 py-2">{{ $agendamento->pet->nome }}</td>
                         <td class="px-2 py-2">{{ $agendamento->service->nome }}</td>
                         <td class="px-2 py-2 flex gap-2">

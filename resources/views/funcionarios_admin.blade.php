@@ -59,7 +59,7 @@
 
         <div class="table-container bg-white p-6 rounded-lg shadow-md max-w-screen-lg mx-auto">
             <h4 class="text-center text-lg font-semibold text-purple-800 mb-4">Lista de Funcionários</h4>
-            <p class="text-center text-muted mb-6">O total de Agendamentos: <strong>XX</strong></p>
+            <p class="text-center text-muted mb-6">O total de Agendamentos: <strong>{{ count($funcionarios) }}</strong></p>
 
             <table class="table table-striped table-hover table-sm w-full">
                 <thead>

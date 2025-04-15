@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
 use App\Models\Servico;
+use App\Models\Animal;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -22,12 +23,13 @@ class FeedbackController extends Controller
     {
         $servicos = Servico::all();
         $feedbacks = Feedback::all();
+        $pets = Animal::where('user_id', auth()->id())->get();  
         if (Auth::check()) {
             $feedbacks = Auth::user()->feedbacks;
         } else {
             return redirect()->route('login');
         }
-        return view('dashboard', compact('servicos', 'feedbacks'));
+        return view('dashboard', compact('servicos', 'feedbacks','pets'));
     }
 
     public function index()

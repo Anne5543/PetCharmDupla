@@ -89,5 +89,10 @@ Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store
 
 Route::resource('animais', AnimalController::class)->middleware('auth');
 
+Route::get('/animais', [AnimalController::class, 'index'])->name('animais.index');
+Route::get('/animais/{id}/edit', [AnimalController::class, 'edit'])->name('animais.edit');
+Route::delete('/animais/{id}', [AnimalController::class, 'destroy'])->name('animais.destroy');
+Route::get('/pets', [AnimalController::class, 'index'])->name('pets_admin');
+
 
 
