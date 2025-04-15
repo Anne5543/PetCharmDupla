@@ -89,12 +89,3 @@ Route::get('/animais', [AnimalController::class, 'index'])->name('animais.index'
 Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store');
 
 Route::resource('animais', AnimalController::class)->middleware('auth');
-
-
-Route::get('/pets-admin', function () {
-    // Buscar os animais (pets) do usuário autenticado
-    $animais = \App\Models\Animal::where('user_id', auth()->user()->id)->get();
-    
-    // Retornar a view 'pets_admin' com a variável 'animais'
-    return view('pets_admin', compact('animais'));
-})->name('pets_admin');

@@ -328,46 +328,7 @@
         @endforeach
 
 
-        <script>
-    document.getElementById('telefone-agendamento').addEventListener('input', function(event) {
-        let input = event.target.value;
-        
-        input = input.replace(/\D/g, '');
-
-        if (input.length > 11) {
-            input = input.substring(0, 11);
-        }
-
-        if (input.length <= 2) {
-            input = input.replace(/^(\d{0,2})/, '($1');
-        } else if (input.length <= 7) {
-            input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-        } else {
-            input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-        }
-        event.target.value = input;
-    });
-</script>
-<script>
-    document.getElementById('telefone-contato').addEventListener('input', function(event) {
-        let input = event.target.value;
-
-        input = input.replace(/\D/g, '');
-
-        if (input.length > 11) {
-            input = input.substring(0, 11); 
-        }
-        if (input.length <= 2) {
-            input = input.replace(/^(\d{0,2})/, '($1');
-        } else if (input.length <= 7) {
-            input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-        } else {
-            input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-        }
-
-        event.target.value = input;
-    });
-</script>
+     
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
