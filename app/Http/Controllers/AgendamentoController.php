@@ -10,6 +10,12 @@ use App\Models\Feedback;
 
 class AgendamentoController extends Controller
 {
+    
+public function pet()
+{
+    return $this->belongsTo(Animal::class, 'pet_id'); 
+}
+
     public function dashboard()
     {
         $servicos = Servico::all();
@@ -28,9 +34,9 @@ class AgendamentoController extends Controller
     public function index()
     {
         $servicos = Servico::all(); 
-        $agendamentos = Agendamento::with('service')->get();
+        $agendamentos = Agendamento::with(['pet', 'service'])->get();
 
-        return view('agendamentos_admin', compact('servicos', 'agendamentos'));
+        return view('agendamentos_admin', compact('servicos', 'agendamentos','pet'));
     }
 
     public function create()

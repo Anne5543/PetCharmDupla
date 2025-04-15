@@ -101,61 +101,59 @@
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Nome<span class="text-red-500">*</span></label>
                         <input type="text" name="nome" placeholder="Seu nome" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-user"></i></span>
+                        <span class="absolute top-[px] left-2 text-gray-400" style="margin-top: 15px;"><i class="fas fa-user"></i></span>
                     </div>
 
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Email<span class="text-red-500">*</span></label>
                         <input type="email" name="email" placeholder="Seu email" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-envelope"></i></span>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-envelope" style="margin-top: 20px;"></i></span>
                     </div>
 
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Telefone<span class="text-red-500">*</span></label>
                         <input type="tel" name="telefone" placeholder="(00) 0000-0000" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone"></i></span>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-phone" style="margin-top: 22px;"></i></span>
                     </div>
 
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Data<span class="text-red-500">*</span></label>
                         <input type="date" name="data" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-calendar-alt"></i></span>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-calendar-alt" style="margin-top: 20px;"></i></span>
                     </div>
 
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Hora<span class="text-red-500">*</span></label>
                         <input type="time" name="hora" class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-clock"></i></span>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-clock" style="margin-top: 20px;"></i></span>
                     </div>
 
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Espécie do Animal<span class="text-red-500">*</span></label>
                         <input type="text" name="especie" placeholder="Ex: Cachorro, Gato..." class="w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm">
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-paw"></i></span>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-paw" style="margin-top: 20px;"></i></span>
                     </div>
 
 
                     <div class="relative">
                         <label class="block mb-1 font-medium text-gray-700">Selecione o seu Pet<span class="text-red-500">*</span></label>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-dog" style="margin-top: 20px;"></i></span>
                         <select class="form-select w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm" id="pet" name="pet_id" required>
+                        
                             <option value="" disabled selected>Selecione um pet</option>
-
-
                             @foreach ($pets as $pet)
                             <option value="{{ $pet->id }}">{{ $pet->nome }}</option>
                             @endforeach
                         </select>
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-dog"></i></span>
                     </div>
 
 
 
                     <div class="relative ">
                         <label class="block mb-1 font-medium text-gray-700">Serviço<span class="text-red-500">*</span></label>
-                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-briefcase"></i></span>
+                        <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-briefcase"  style="margin-top: 20px;"></i></span>
                         <select class="form-select w-full rounded-xl px-4 py-3 pl-11 border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm " id="servico" name="servico" required>
-                            <span class="absolute top-[38px] left-2 text-gray-400"><i class="fas fa-briefcase"></i></span>
-
+                            
                             <option value="" disabled selected>Selecione um serviço</option>
                             @foreach ($servicos as $servico)
                             <option value="{{ $servico->id }}">{{ $servico->nome }}</option>

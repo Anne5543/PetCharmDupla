@@ -193,7 +193,7 @@
                                     <td>{{ $agendamento->data }}</td>
                                     <td>{{ $agendamento->hora }}</td>
                                     <td>{{ $agendamento->especie }}</td>
-                                    <td>{{ $agendamento->animals->nome }}</td>
+                                    <td>{{ $agendamento->pet->nome ?? 'N/A' }}</td>
 
                                     <td>{{ $agendamento->service->nome }}</td>
                                     <td>
