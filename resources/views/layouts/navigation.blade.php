@@ -15,6 +15,7 @@
                     <a href="#serviços" class="text-white no-underline hover:text-gray-300">Serviços</a>
                     <a href="#agendamentos" class="text-white no-underline hover:text-gray-300">Agendamentos</a>
                     <a href="#contatos" class="text-white no-underline hover:text-gray-300">Feedback</a>
+                    <a href="{{ route('animais.index') }}" class="text-white no-underline hover:text-gray-300">Meus Pets</a>
                 </div>
 
             </div>

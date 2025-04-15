@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
-    protected $fillable = [
-        'nome',
-        'peso',
-        'idade',
-        'imagem	',
-    ];
+    protected $fillable = ['nome','peso','idade','imagem','user_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

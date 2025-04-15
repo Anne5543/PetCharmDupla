@@ -12,7 +12,7 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $animais = Animal::all();
+        $animais = Animal::where('user_id', auth()->user()->id)->get();
         return view('animal', compact('animais'));
     }
 
@@ -29,7 +29,6 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
 {
-    // Validação dos dados
     $validated = $request->validate([
         'nome' => 'required|string|max:255',
         'peso' => 'required|numeric',
@@ -37,22 +36,20 @@ class AnimalController extends Controller
         'imagem' => 'nullable|image|max:2048',
     ]);
 
-    // Verifica se tem imagem válida
     if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
         $requestImage = $request->file('imagem');
         $extension = $requestImage->extension();
 
-        // Gera um nome único pra imagem
         $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
 
-        // Move para pasta pública
         $requestImage->move(public_path('images/pets'), $imageName);
+    
 
-        // Salva o caminho no array validado
         $validated['imagem'] = 'images/pets/' . $imageName;
     }
 
-    // Cria no banco
+    $validated['user_id'] = auth()->user()->id;
+
     Animal::create($validated);
 
     return redirect('/animais')->with('success', 'Animal cadastrado com sucesso!');

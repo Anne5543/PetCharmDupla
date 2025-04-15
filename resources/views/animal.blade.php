@@ -26,7 +26,8 @@
             @csrf
             <div>
                 <label for="image" class="block text-sm font-medium text-gray-700">Imagem:</label>
-                <input type="file" id="image" name="image" accept="image/*" class="form-control-file w-full border border-gray-300 rounded-lg px-4 py-2">
+                <input type="file" id="imagem" name="imagem" accept="image/*" class="form-control-file w-full border border-gray-300 rounded-lg px-4 py-2">
+
             </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Nome:</label>
@@ -48,7 +49,6 @@
         </form>
     </div>
 
-    <!-- Cards dos animais -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         @foreach ($animais as $animal)
             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
@@ -64,6 +64,7 @@
         @endforeach
     </div>
 </div>
+
 
 <script>
     function mostrarFormulario() {
