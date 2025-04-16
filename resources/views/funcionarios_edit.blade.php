@@ -15,7 +15,6 @@
     @include('layouts.navbar_admin')
 
     <div id="inicio" style="position: relative;">
-        <img src="{{ asset('images/banner.png') }}" alt="Banner" class="banner">
         @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000; display: block;">
             {{ session('success') }}
@@ -86,9 +85,7 @@
 
                     <div>
                         <label for="telefone" class="block text-sm text-purple-800 mb-1">Telefone:</label>
-                        <input type="text" name="telefone" id="telefone" value="{{ $funcionario->telefone }}"
-                            class="w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
-                            required>
+                        <input type="text" name="telefone" id="telefone_func" value="{{ $funcionario->telefone }}" class="w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"required>
                     </div>
                 </div>
 
@@ -113,6 +110,27 @@
             @endif
         </div>
     </div>
+
+    <script>
+            document.getElementById('telefone_func').addEventListener('input', function(event) {
+                let input = event.target.value;
+
+                input = input.replace(/\D/g, '');
+
+                if (input.length > 11) {
+                    input = input.substring(0, 11);
+                }
+                if (input.length <= 2) {
+                    input = input.replace(/^(\d{0,2})/, '($1');
+                } else if (input.length <= 7) {
+                    input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+                } else {
+                    input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+                }
+
+                event.target.value = input;
+            });
+        </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

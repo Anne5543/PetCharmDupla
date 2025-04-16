@@ -89,7 +89,7 @@
                             <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este funcionario?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-xs">Excluir</button>
+                                <button type="submit" class="bg-red-800 hover:bg-red-700 text-white px-3 py-1 rounded-md text-xs">Excluir</button>
                             </form>
                         </td>
                     </tr>

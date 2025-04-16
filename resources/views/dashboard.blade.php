@@ -105,7 +105,7 @@
                 </div>
             </div>
         </div>
-    </div><br><br><br>
+    </div><br><br><br><br>
     <section id="agendamentos" class="min-h-screen from-pink-100 via-purple-100 to-blue-100 flex items-center justify-center px-4 py-12">
         <div class="backdrop-blur-xl bg-white/70 shadow-xl rounded-3xl max-w-2xl w-full p-8 border border-purple-100" style="background-color: #f0f0f0;">
             <h2 class="text-4xl font-extrabold text-center text-purple-800 mb-4">Agendamento de Serviços</h2>
@@ -163,11 +163,7 @@
                             <option value="{{ $pet->id }}">{{ $pet->nome }}</option>
                             @endforeach
                         </select>
-                        @if ($errors -> any())
-                        @foreach($errors->all() as $error)
-                        {{$error}}
-                        @endforeach
-                        @endif
+                        
                     </div>
 
 
@@ -318,7 +314,7 @@
 
                             <div class="mb-3">
                                 <label for="telefone" class="form-label" id="telefone-modal">Telefone</label>
-                                <input type="text" class="form-control" name="telefone" id="telefone" value="{{ $feedback->telefone }}" required oninput="mascaraTelefone(this)">
+                                <input type="text" class="form-control" name="telefone" id="telefone-edit-contato" value="{{ $feedback->telefone }}" required>
                             </div>
 
                             <div class="mb-3">
@@ -367,6 +363,26 @@
         </script>
         <script>
             document.getElementById('telefone-contato').addEventListener('input', function(event) {
+                let input = event.target.value;
+
+                input = input.replace(/\D/g, '');
+
+                if (input.length > 11) {
+                    input = input.substring(0, 11);
+                }
+                if (input.length <= 2) {
+                    input = input.replace(/^(\d{0,2})/, '($1');
+                } else if (input.length <= 7) {
+                    input = input.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+                } else {
+                    input = input.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+                }
+
+                event.target.value = input;
+            });
+        </script>
+        <script>
+            document.getElementById('telefone-edit-contato').addEventListener('input', function(event) {
                 let input = event.target.value;
 
                 input = input.replace(/\D/g, '');
